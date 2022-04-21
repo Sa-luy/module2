@@ -4,21 +4,23 @@ class Node
     public $next;
     public int $score;
     public string $name;
-    function __construct($name,$score)
+    function __construct($name, $score)
     {
-        $this->score=$score;
-        $this->name=$name;
-        $this->next=null;
+        $this->score = $score;
+        $this->name = $name;
+        $this->next = null;
     }
-    function readNode(){
-        $infor=['name'=>$this->name,'score'=>$this->score];
+    function readNode()
+    {
+        $infor = ['name' => $this->name, 'score' => $this->score];
         return $infor;
     }
-    function getscore(){
+    function getscore()
+    {
         return $this->score;
-
     }
-    function getname(){
+    function getname()
+    {
         return $this->name;
     }
 }
@@ -33,25 +35,25 @@ class LinkedList
         $this->lastNode = null;
         $this->count = 0;
     }
-    function insertFist($name,$score): void
+    function insertLast($name, $score): void
     {
-        $node = new Node($name,$score); 
-        $node->next = $this->firstNode; 
+        $node = new Node($name, $score);
+        $node->next = $this->firstNode;
         $this->firstNode = $node;
         if (is_null($this->lastNode)) {
-            $this->lastNode = $node; 
+            $this->lastNode = $node;
         }
     }
-    function insertLast($name,$score)
+    function  insertFist($name, $score)
     {
         if (!(is_null($this->firstNode))) {
-            $node = new Node($name,$score);
+            $node = new Node($name, $score);
             $this->lastNode->next = $node;
             $node->next = null;
             $this->lastNode = $node;
             $this->count++;
         } else {
-            $this->insertFist($name,$score);
+            $this->insertLast($name, $score);
         }
     }
     function showList()
@@ -66,12 +68,10 @@ class LinkedList
     }
     function totalStudentsFail()
     {
-        $count=0;
         $curent = $this->firstNode;
-        while (!is_null($curent)){
-            if( $curent->getscore()<=5){
+        while (!is_null($curent)) {
+            if ($curent->getscore() < 4) {
                 return $curent;
-                $count++;
             }
             $curent = $curent->next;
         }
@@ -79,52 +79,50 @@ class LinkedList
     function FindCrossingPoint($score)
     {
         $curentNode = $this->firstNode;
-        while (!is_null($curentNode)){
-            if($curentNode->getscore()==$score) {
-               return $curentNode-> readNode();
-                ;
-             }
-        }
-    }
-    function listStudentMaxScore(){
-        $max=0;
-        $curent = $this->firstNode;
-        while (!is_null($curent)){
-            if( $curent->getscore()>$max){
-                $max= $curent->getscore();
+        while (!is_null($curentNode)) {
+            if ($curentNode->getscore() == $score) {
+                return $curentNode->readNode();;
             }
         }
+    }
+    function listStudentMaxScore()
+    {
+        $max = 0;
+        $curent = $this->firstNode;
+        while (!is_null($curent)) {
+            if ($curent->getscore() > $max) {
+                $max = $curent->getscore();
+            }
+            $curent = $curent->next;
+        }
         $this->FindCrossingPoint($max);
+        return $max;
     }
     function findByName($name)
     {
         $curentNode = $this->firstNode;
-        while (!is_null($curentNode)){
-            if($curentNode->getname()==$name){
-               return $curentNode-> readNode();
+        while (!is_null($curentNode)) {
+            if ($curentNode->getname() == $name) {
+                return $curentNode->readNode();
             }
-            }
+        }
     }
-    
 }
-$object1=new LinkedList();
-$object1->insertFist('hai',8);
-$object1->insertFist('lan',2);
-$object1->insertFist('hai',4);
-$object1->insertFist('hai',9);
-$object1->insertFist('hai',6);
-$object1->insertFist('hai',3);
-$object1->insertFist('hai',1);
-$object1->insertFist('hai',0);
-$object1->insertFist('hai',7);
-$object1->insertFist('hai',8);
-$object1->insertFist('hai',8);
-$object1->insertFist('hai',9);
-echo '<pre>';
-print_r($object1);
-echo '\\\\\\\\\\\\\\\\\\\\';
+$object1 = new LinkedList();
+$object1->insertFist('mot', 8);
+$object1->insertLast('hai', 2);
+$object1->insertLast('ba', 4);
+$object1->insertLast('bon', 9);
+$object1->insertLast('nam', 6);
+$object1->insertLast('sau', 3);
+$object1->insertLast('bay', 1);
+$object1->insertLast('tam', 0);
+$object1->insertLast('chin', 7);
+$object1->insertLast('1muoi', 8);
+$object1->insertLast('muoimot', 8);
+$object1->insertLast('muoi hai', 9);
 echo '<pre>';
 print_r($object1->totalStudentsFail());
-
-
-?>
+echo '\\\\\\\\\\\\\\\\\\\\';
+// echo '<pre>';
+// print_r($object1->totalStudentsFail('lan'));

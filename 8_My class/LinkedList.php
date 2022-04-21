@@ -23,10 +23,22 @@ class LinkList
         $this->lastNode = null;
         $this->count = 0;
     }
-    function add($data,$index)
-    {
-
-    }
+    public function insert($data, $key)  
+      {        if ($key == 0) {            
+          $this->insertFist($data);        } 
+          else {            
+              $link = new Node($data);            
+              $current = $this->firstNode;            
+              $previous = $this->firstNode;
+        for ($i = 0; $i < $key; $i++) {                
+            $previous = $current;                
+            $current = $current->next;            
+        }           
+             $link->next = $current;           
+              $previous->next = $link;           
+               $this->count++;        
+            }  
+          }
     function insertFist($data): void
     {
         $node = new Node($data);  //tạo node mới
@@ -105,4 +117,3 @@ class LinkList
         
     }
 }
-?>
