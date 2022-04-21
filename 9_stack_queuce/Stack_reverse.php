@@ -6,7 +6,13 @@ class Stack
     function __construct($limit = 20)
     {
         $this->stack = [];
-        $this->limit = 11;
+        $this->arr=[];
+        $this->limit = 20;
+    }
+    function size()
+    {
+        return count($this->stack);
+         
     }
     function push($item)
     {
@@ -18,7 +24,7 @@ class Stack
     }
     function pop()
     {
-        array_shift($this->stack);
+       return array_shift($this->stack);
     }
     function top()
     {
@@ -36,10 +42,29 @@ class Stack
             return "Stack not is empty";
         }
     }
+    function reverse()
+    {
+        for($i=$this->size();$i>=1;$i--){
+            echo $i.'>';
+          $item=$this->pop();
+          array_unshift($this->arr,$item);
+        }
+  
+        return $this->arr;
+    }
 }
 $obj = new Stack();
-for ($i = 0; $i < $obj->limit; $i++) {
+for ($i = 1; $i <= $obj->limit; $i++) {
     $obj->push($i);
 }
 echo '<pre>';
 print_r($obj);
+echo'<hr>';
+// echo $obj->size();
+$obj->reverse();
+// echo $obj->pop();
+// echo '<pre>';
+print_r($obj);
+// $arr=[];
+
+//   array_push($arr,$item);
