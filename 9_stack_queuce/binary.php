@@ -6,11 +6,12 @@ class Binary
     // public int $limit=16;
     function __construct()
     {
-        $this->stack=[];
-        $this->quotient=null;
-        // $this->balance=null;
+        $this->stack = [];
+        // $this->quotient = null;
+        // $this->balance = "";
     }
-    function getBinary(){
+    function getBinary()
+    {
 
         return $this->stack;
     }
@@ -22,26 +23,38 @@ class Binary
         array_unshift($this->stack, $item);
         // }
     }
-
-    function binaryConversion($item)
+    function top()
     {
-      while ($item>= 1) {
-          # code...
-      
-               $this->quotient=floor($item/2);
-               // if($item==1){
-                   //   $this->balance=1;
-                   //  }
-                   $balance= $item%2;
-                   $this->quotient=$item;
-                   $this->push($balance);
-        }  
-        
+        if ($this->isEmpty()) {
+            return 'Stack is empty';
+        } else {
+            return array_pop($this->stack);
+        }
+    }
+    function isEmpty()
+    {
+        if (empty($this->stack)) {
+            return "Stack is empty";
+        } else {
+            return  "Stack not is empty";
+        }
+    }
 
+
+    function binaryConversion($number)
+    {
+        $balanceStr = "";
+        while ($number >= 1) {
+            $bin = $number % 2;
+            $number = floor($number / 2);
+            $balanceStr .= $bin;
+        }
+        $balanceStr = strrev($balanceStr);
+        return $balanceStr;
     }
 }
-$obj= new Binary;
-$obj->binaryConversion(6);
-echo $obj->quotient;
-echo '<pre>';
-print_r($obj->getBinary());
+$obj = new Binary;
+echo $obj->binaryConversion(4);
+// echo $obj->quotient;
+// echo '<pre>';
+// print_r($obj->getBinary());
