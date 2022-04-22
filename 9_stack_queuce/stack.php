@@ -21,7 +21,7 @@ class Stack
   }
   function pop()
   {
-    array_shift($this->stack);
+    return array_shift($this->stack);
   }
   function top()
   {
@@ -52,16 +52,13 @@ $obj->pop();
 
 $obj->push('Saluy_6');
 $obj->push('Saluy_7');
-$obj->pop();
-$obj->pop();
-$obj->pop();
-$obj->pop();
 
-$obj->push('Saluy_1');
-$obj->push('Saluy_1');
-$obj->push('Saluy_1');
-$obj->push('Saluy_1');
-$obj->push('Saluy_1');
+
+$obj->push('Saluy_8');
+$obj->push('Saluy_9');
+$obj->push('Saluy_10');
+$obj->push('Saluy_11');
+$obj->push('Saluy_12');
 echo $obj->isEmpty();
 
 echo '<pre>';
