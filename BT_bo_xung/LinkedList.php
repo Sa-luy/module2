@@ -38,9 +38,9 @@ class LinkList
         /* If this is the first node inserted in the list
            then set the lastNode pointer to it.
         */
-        if($this->lastNode == NULL)
+        if ($this->lastNode == NULL)
             $this->lastNode = &$link;
-            $this->count++;
+        $this->count++;
     }
 
 
@@ -49,28 +49,24 @@ class LinkList
     {
         $listData = array();
         $current = $this->firstNode;
-        while($current != NULL)
-        {
+        while ($current != NULL) {
             array_push($listData, $current->readNode());
             $current = $current->next;
         }
-        foreach($listData as $v){
-            echo $v." ";
+        foreach ($listData as $v) {
+            echo $v . " ";
         }
     }
 
     //reversing all nodes of linklist
     public function reverseList()
     {
-        if($this->firstNode != NULL)
-        {
-            if($this->firstNode->next != NULL)
-            {
+        if ($this->firstNode != NULL) {
+            if ($this->firstNode->next != NULL) {
                 $current = $this->firstNode;
                 $new = NULL;
 
-                while ($current != NULL)
-                {
+                while ($current != NULL) {
                     $temp = $current->next;
                     $current->next = $new;
                     $new = $current;
@@ -89,77 +85,67 @@ class LinkList
         $current = $this->firstNode;
         $previous = $this->firstNode;
 
-        while($current->data != $key)
-        {
-            if($current->next == NULL)
+        while ($current->data != $key) {
+            if ($current->next == NULL)
                 return NULL;
-            else
-            {
+            else {
                 $previous = $current;
                 $current = $current->next;
             }
         }
 
-        if($current == $this->firstNode)
-         {
-              if($this->count == 1)
-               {
-                  $this->lastNode = $this->firstNode;
-               }
-               $this->firstNode = $this->firstNode->next;
-        }
-        else
-        {
-            if($this->lastNode == $current)
-            {
-                 $this->lastNode = $previous;
-             }
+        if ($current == $this->firstNode) {
+            if ($this->count == 1) {
+                $this->lastNode = $this->firstNode;
+            }
+            $this->firstNode = $this->firstNode->next;
+        } else {
+            if ($this->lastNode == $current) {
+                $this->lastNode = $previous;
+            }
             $previous->next = $current->next;
         }
-        $this->count--;  
+        $this->count--;
     }
 
 
-       //empty linklist
+    //empty linklist
     public function emptyList()
     {
         $this->firstNode == NULL;
-
     }
 
 
     //insertion at index
 
-    public function insert($NewItem,$key){
-        if($key == 0){
-        $this->insertFirst($NewItem);
-    }
-    else{
-        $link = new ListNode($NewItem);
-        $current = $this->firstNode;
-        $previous = $this->firstNode;
+    public function insert($NewItem, $key)
+    {
+        if ($key == 0) {
+            $this->insertFirst($NewItem);
+        } else {
+            $link = new ListNode($NewItem);
+            $current = $this->firstNode;
+            $previous = $this->firstNode;
 
-        for($i=0;$i<$key;$i++)
-        {       
+            for ($i = 0; $i < $key; $i++) {
                 $previous = $current;
                 $current = $current->next;
+            }
+
+            $previous->next = $link;
+            $link->next = $current;
+            $this->count++;
         }
-
-           $previous->next = $link;
-           $link->next = $current; 
-           $this->count++;
     }
-
-    }   
 }
 
 $obj = new LinkList();
 $obj->insertFirst('saluy1');
 $obj->insertFirst('saluy2');
 $obj->insertFirst('saluy3');
-$obj->insert('saLuy',2); // at any index
+$obj->insert('saLuy', 2); // at any index
 $obj->deleteNode('saluy1');
 
-$obi->insert('SALUY',1);
+$obi->insert('SALUY', 1);
 echo '<pre>';
-print_r( $obj->readList());
+print_r($obj->readList());
