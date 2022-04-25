@@ -66,11 +66,11 @@ class LinkedList
         }
         return   $listData;
     }
-    function totalStudentsFail()
+    function totalStudentsFail($score)
     {
         $curent = $this->firstNode;
         while (!is_null($curent)) {
-            if ($curent->getscore() < 4) {
+            if ($curent->getscore() < $score) {
                 return $curent;
             }
             $curent = $curent->next;
@@ -85,7 +85,7 @@ class LinkedList
             }
         }
     }
-    function listStudentMaxScore()
+    function studentMaxScore()
     {
         $max = 0;
         $curent = $this->firstNode;
@@ -122,7 +122,7 @@ $object1->insertLast('1muoi', 8);
 $object1->insertLast('muoimot', 8);
 $object1->insertLast('muoi hai', 9);
 echo '<pre>';
-print_r($object1->totalStudentsFail());
+print_r($object1->studentMaxScore());
 echo '\\\\\\\\\\\\\\\\\\\\';
-// echo '<pre>';
-// print_r($object1->totalStudentsFail('lan'));
+echo '<pre>';
+print_r($object1->totalStudentsFail(5));

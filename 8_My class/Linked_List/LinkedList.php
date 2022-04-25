@@ -17,9 +17,9 @@ class ListNode
 
 class LinkList
 {
-    private $firstNode;
-    private $lastNode;
-    private $count;
+    public $firstNode;
+    public $lastNode;
+    public $count;
 
     function __construct()
     {
@@ -28,19 +28,20 @@ class LinkList
         $this->count = 0;
     }
 
-    //insertion at the start of linklist
+    //ichèn vào đầu danh sách liên kết
     public function insertFirst($data)
     {
-        $link = new ListNode($data);
-        $link->next = $this->firstNode;
-        $this->firstNode = &$link;
+        $Node = new ListNode($data); // hởi tạo đọi tượng node
+        $Node->next = $this->firstNode; //Node gọi đến thuộc tinh next gán bằng node dâu của linkedlist
+        $this->firstNode = &$Node; // node đấuẽ tham chiếu dếnđối tương node vừa tạo.
+        //khi giá trị của node đầu trong linked lít thay  đổi  thì giá trị của nói tượng node vừa tạo cũng thay đổ theo
 
-        /* If this is the first node inserted in the list
-           then set the lastNode pointer to it.
+        /* Nếu đây là nút đầu tiên được chèn vào danh sách
+           sau đó đặt con trỏ LastNode cho nó.
         */
-        if($this->lastNode == NULL)
-            $this->lastNode = &$link;
-            $this->count++;
+        if ($this->lastNode == NULL)// nếu nút cuois cùng là rỗng
+            $this->lastNode = &$Node;//thì gán nút cuois là nút vưa khởi tạo
+        $this->count++;// độ dài
     }
 
 
@@ -49,28 +50,24 @@ class LinkList
     {
         $listData = array();
         $current = $this->firstNode;
-        while($current != NULL)
-        {
+        while ($current != NULL) {
             array_push($listData, $current->readNode());
             $current = $current->next;
         }
-        foreach($listData as $v){
-            echo $v." ";
+        foreach ($listData as $v) {
+            echo $v . " ";
         }
     }
 
-    //reversing all nodes of linklist
+    //đi ngang qua tất cả các nút của danh sách được liên kết
     public function reverseList()
     {
-        if($this->firstNode != NULL)
-        {
-            if($this->firstNode->next != NULL)
-            {
+        if ($this->firstNode != NULL) {
+            if ($this->firstNode->next != NULL) {
                 $current = $this->firstNode;
                 $new = NULL;
 
-                while ($current != NULL)
-                {
+                while ($current != NULL) {
                     $temp = $current->next;
                     $current->next = $new;
                     $new = $current;
@@ -89,77 +86,70 @@ class LinkList
         $current = $this->firstNode;
         $previous = $this->firstNode;
 
-        while($current->data != $key)
-        {
-            if($current->next == NULL)
+        while ($current->data != $key) {
+            if ($current->next == NULL)
                 return NULL;
-            else
-            {
+            else {
                 $previous = $current;
                 $current = $current->next;
             }
         }
 
-        if($current == $this->firstNode)
-         {
-              if($this->count == 1)
-               {
-                  $this->lastNode = $this->firstNode;
-               }
-               $this->firstNode = $this->firstNode->next;
-        }
-        else
-        {
-            if($this->lastNode == $current)
-            {
-                 $this->lastNode = $previous;
-             }
+        if ($current == $this->firstNode) {
+            if ($this->count == 1) {
+                $this->lastNode = $this->firstNode;
+            }
+            $this->firstNode = $this->firstNode->next;
+        } else {
+            if ($this->lastNode == $current) {
+                $this->lastNode = $previous;
+            }
             $previous->next = $current->next;
         }
-        $this->count--;  
+        $this->count--;
     }
 
 
-       //empty linklist
+    //empty linklist
     public function emptyList()
     {
         $this->firstNode == NULL;
-
     }
 
 
     //insertion at index
 
-    public function insert($NewItem,$key){
-        if($key == 0){
-        $this->insertFirst($NewItem);
-    }
-    else{
-        $link = new ListNode($NewItem);
-        $current = $this->firstNode;
-        $previous = $this->firstNode;
+    public function insert($NewItem, $key)
+    {
+        if ($key == 0) {
+            $this->insertFirst($NewItem);
+        } else {
+            $link = new ListNode($NewItem);
+            $current = $this->firstNode;
+            $previous = $this->firstNode;
 
-        for($i=0;$i<$key;$i++)
-        {       
+            for ($i = 0; $i < $key; $i++) {
                 $previous = $current;
                 $current = $current->next;
+            }
+
+            $previous->next = $link;
+            $link->next = $current;
+            $this->count++;
         }
-
-           $previous->next = $link;
-           $link->next = $current; 
-           $this->count++;
     }
-
-    }   
 }
 
 $obj = new LinkList();
 $obj->insertFirst('saluy1');
 $obj->insertFirst('saluy2');
 $obj->insertFirst('saluy3');
-$obj->insert('saLuy',2); // at any index
+$obj->insert('saLuy', 2); // at any index
 $obj->deleteNode('saluy1');
 
-$obi->insert('SALUY',1);
-echo '<pre>';
-print_r( $obj->readList());
+$obj->insert('saluy_7', 2);
+$obj->insert('saLuy_9', 1); // at any index
+
+// echo '<pre>';
+// print_r($obj->readList());
+var_dump($obj->firstNode);

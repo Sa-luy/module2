@@ -146,6 +146,6 @@ $obj->insertFirst('saluy3');
 $obj->insert('saLuy', 2); // at any index
 $obj->deleteNode('saluy1');
 
-$obi->insert('SALUY', 1);
+// $obi->insert('SALUY', 1);
 echo '<pre>';
 print_r($obj->readList());

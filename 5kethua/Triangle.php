@@ -4,6 +4,7 @@ include_once('../5kethua/Shape.php');
 use Geometry_class\Shape;
 
 class Triangle extends Shape
+
 {
     public float $side1;
     public float $side2;
