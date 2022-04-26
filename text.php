@@ -1,23 +1,92 @@
-<?php
-// $var = '0';
-// var_dump(empty($var));
+<?php 
+session_start();
+// session_destroy();
+if(isset($_SESSION['left'])){
+    $arr = $_SESSION['arr'];
+    $left = $_SESSION['left'];
+    $right = $_SESSION['right'];
+    $mid = $_SESSION['mid'];
 
-// $var = 0;
-// var_dump(empty($var));
+    $_SESSION['arr'] = $arr;
+    $_SESSION['left'] = $left;
+    $_SESSION['right'] = $right;
+    $_SESSION['mid'] = $mid;
 
-// $var = '';
-// var_dump(empty($var));
+    $show = true;
+}else{
+    $arr = [];
+    for($i = 0; $i < 100; $i++){
+        $arr[$i] = $i + 1;
+    }
+    $left = 0;
+    $right = count($arr) - 1;
+    $mid = ceil(($left + $right)/2);
+    $_SESSION['arr'] = $arr;
+    $_SESSION['left'] = $left;
+    $_SESSION['right'] = $right;
+    $_SESSION['mid'] = $mid;
+    $show = false;
 
-// $var = FALSE;
-// var_dump(empty($var));
+}
 
-// $var = NULL;
-// var_dump(empty($var));
+if($_SERVER["REQUEST_METHOD"] == 'POST'){
+    $rand = rand(1, 100);
+    if(isset($_REQUEST['doan'])){
+        // var_dump($_SESSION['arr']);
+        // echo '[Máy] đoán số: '.$_SESSION['arr'][$_SESSION['mid']];
+        echo '[Máy] đoán số: ' . $rand;
+    }
+    if(isset($_REQUEST['lon_hon'])){
+        // echo '<pre>';
+        // print_r($_SESSION);
+        // echo '</pre>';
+        $left = $_SESSION['left'];
+        $right = $_SESSION['mid'] -1;
+        $mid = ceil(($left + $right)/2 );
+        $_SESSION['left'] = $left;
+        $_SESSION['right'] = $right;
+        $_SESSION['mid'] = $mid;
+        echo '[Máy] đoán số: '.$arr[$mid];
+    }
 
-// var_dump(empty($bien_khong_ton_tai));
+    if(isset($_REQUEST['nho_hon'])){
+        // echo '<pre>';
+        // print_r($_SESSION);
+        // echo '</pre>';
+        $left = $_SESSION['mid'] + 1;
+        $right = $_SESSION['right'];
+        $mid = ceil(($left + $right)/2 );
+        $_SESSION['left'] = $left;
+        $_SESSION['right'] = $right;
+        $_SESSION['mid'] = $mid;
+        echo '[Máy] đoán số: '.$arr[$mid];
+    }
 
-    $obj= new LinkedList();
-    $obj->insertLast(5451);
-    echo '<pre>';
-    print_r($obj);
+    if(isset($_REQUEST['doan_dung'])){
+        echo 'Chúc mừng !!!';
+        $show = false;
+        session_destroy(); 
+    }
+}
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        hãy nghỉ một số 1=>100
+        <?php if($show):?>
+        <input type="submit" value="Đoán đúnng" name="doan_dung">
+        <input type="submit" value="Đoán lớn hơn rồi" name="lon_hon">
+        <input type="submit" value="Đoán nhỏ hơn rồi" name="nho_hon">
+        <?php else:?>
+        <input type="submit" value="Đoán" name="doan">
+        <?php endif;?>
+    </form>
+</body>
+</html>
