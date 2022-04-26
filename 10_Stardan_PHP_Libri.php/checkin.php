@@ -33,3 +33,8 @@ $obj->push('Saaluy_44');
 // echo '<pre>';
 // var_dump($obj);
 // echo $obj->isEmpty();
+echo "FIFO\n";
+$obj->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO);
+for ($obj->rewind(); $obj->valid(); $obj->next) {
+    echo $obj->current();
+}
