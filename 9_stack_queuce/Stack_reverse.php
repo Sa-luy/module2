@@ -45,7 +45,6 @@ class Stack
     function reverse()
     {
         for($i=$this->size();$i>=1;$i--){
-            echo $i.'>';
           $item=$this->pop();
           array_unshift($this->arr,$item);
         }
