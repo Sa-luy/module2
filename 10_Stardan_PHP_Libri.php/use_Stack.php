@@ -11,13 +11,13 @@ for ($i = 1; $i < strlen($str); $i++) {
         $obj->push($str[$i]);
         echo '<pre>';
         print_r($obj);
-    } // else {
-    //     if (!$obj->isEmpty()) {
-    //         if ($str[$i] == ')') {
-    //             if ($obj->current() != '(') {
-    //                 return false;
-    //             }
-    //         }
+    }  else {
+         if (!$obj->isEmpty()) {
+             if ($str[$i] == ')') {
+                 if ($obj->current() != '(') {
+                    return false;
+                }
+            }
     //     }
     //     if ($str[$i] == '}') {
     //         if ($obj->current() != '{') {
