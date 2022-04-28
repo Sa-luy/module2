@@ -18,7 +18,7 @@ function insertSort($arr)
     }
     return $arr;
 }
-$arr = [5, -4, 3, 7, 2, 1, 0, 8, 9, 2];
+$arr = [5, -4, 3, 7, 2, 1, 0, 8, 90, 20];
 $newArr = insertSort($arr);
 echo "<pre>";
 print_r($newArr);
