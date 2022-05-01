@@ -3,7 +3,7 @@
 
 function isFirstLetterUpperCase($str)
 {
-    $regexp = '/^[A-Z]+/';
+    $regexp = '/^[A-Z]+$/';
     if (preg_match($regexp, $str)) {
         echo ("String's  is uppercase<br>");
     } else {
