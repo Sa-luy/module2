@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // function sort_ascending($arr,$element)
 //  {
 // for($i=count($arr);$i>=0;$i--){
@@ -33,3 +34,8 @@ for($x = 2017; $x > 0; $x--)
     break;
 }
 ?>
+=======
+const A = 3;
+A+=3
+echo A;
+>>>>>>> 350f04c345ad5f3b506ad436a4efa1c65164d685
