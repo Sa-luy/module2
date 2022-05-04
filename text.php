@@ -1,12 +1,35 @@
 <?php
-$ip = "192.168.1.1";
-$iparr = preg_split ("/\./", $ip);
-print "$iparr[0] <br />";
-print "$iparr[1] <br />" ;
-print "$iparr[2] <br />" ;
-print "$iparr[3] <br />" ;
+// function sort_ascending($arr,$element)
+//  {
+// for($i=count($arr);$i>=0;$i--){
+//     if($i==0){
+//         $arr[0]=$element;
+//     $arr[$i]=$arr[$i-1];
+//     }
+// }
+//   var_dump($arr[0]);
+//     return $arr ;
+// }
+// function insert_first_position( $arr )
+// {
+//     $temp=0;
+//     $element=count($arr)/2;
+//     for ($i=0,$j=(count($arr)-1); $i <= ceil($element),$j>=floor($element); $i++,$j--) { 
+//        $temp=$arr[$i];
+//        $arr[$i]=$arr[$j];
+//        $arr[$j]=$temp;
 
-$str = "Vi du ve ham preg_replace 21a321 878"; 
-$str = preg_replace("/[0-9]+/", "[2000,231]", $str);
-print $str;
+//     }
+//     return $arr;
+// }
+// $arr= [-1,2,3,4,5,6,7,8,9] ;
+// // $arr[10]=123;
+// echo "<pre>";
+// print_r(insert_first_position($arr,)) ;
+// print_r($arr)
+for($x = 2017; $x > 0; $x--)
+{
+    echo x;
+    break;
+}
 ?>
