@@ -1,12 +1,13 @@
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = " saluy";
+$servername = "localhost";
+// $username = "username";
+// $password = "password";
 
-
-$conn = new mysqli($host, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die('Ket noi khong thanhf coong' . $conn->connect_error);
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=bt_dtbase",);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch (PDOException $e) {
+  echo "Ket noi loi: " . $e->getMessage();
 }
-echo ' ket noi thanh coong';
