@@ -62,6 +62,7 @@ tr:nth-child(odd) {
                 <td> <img src="<?php echo $row->image; ?>" alt="" width="100px" height="100px"></td>
                 <td>
                     <a href="showbook.php?id=<?php echo $row->book_id; ?>">Xem</a> |
+                    <a href="edit_book.php?id=<?php echo $row->book_id; ?>">Sua</a> |
                     <a href="delete_book.php?id=<?php echo $row->book_id; ?>">xoa</a> |
 
 
