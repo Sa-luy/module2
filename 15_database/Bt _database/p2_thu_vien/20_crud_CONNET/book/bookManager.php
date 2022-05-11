@@ -27,7 +27,7 @@ tr:nth-child(odd) {
 </style>
 
 <body>
-
+    <a href="addbook.php"><button type="subit">THêm Sách</button></a>
 
     <table border="1">
         <thead>
@@ -53,7 +53,6 @@ tr:nth-child(odd) {
                 <td><?php echo $row->book_id; ?></td>
                 <td><?php echo $row->ma_loai_sach; ?></td>
                 <td><?php echo $row->book_name; ?></td>
-                <td><?php echo $row->ma_tac_gia; ?></td>
                 <td><?php echo $row->nha_xuat_ban; ?></td>
                 <td><?php echo $row->tac_gia; ?></td>
                 <td><?php echo $row->ma_tac_gia; ?></td>
