@@ -21,19 +21,19 @@
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
-
+                    <!-- 
                     <tr class="text-dark">
                         <th scope="col">STT</th>
                         <th scope="col">Họ</th>
                         <th scope="col">Tên</th>
                         <th scope="col">Ngày Sinh</th>
-                        <!-- <th scope="col">Số Hộ Khẩu</th> -->
-                        <th scope="col">giới Tính</th>
-                        <!-- <th scope="col">Số CCCD</th> -->
-                        <!-- <th scope="col">Mã chủ hộ</th> -->
-                        <!-- <th scope="col">Địa chỉ</th> -->
-                        <th scope="col">Chức Năng</th>
-                    </tr>
+                        <th scope="col">Số Hộ Khẩu</th> -->
+                    <!-- <th scope="col">giới Tính</th> -->
+                    <!-- <th scope="col">Số CCCD</th> -->
+                    <!-- <th scope="col">Mã chủ hộ</th> -->
+                    <!-- <th scope="col">Địa chỉ</th> -->
+                    <!-- <th scope="col">Chức Năng</th> -->
+                    <!-- </tr> -->
 
 
 
@@ -62,15 +62,16 @@
                             <td><?= $obj->cccd ?></td>
                             <td><?= $obj->phone ?></td>
                             <td><?= $obj->address ?></td>
-                            <td><a href="index.php?controller=population&action=delete&id=<?= $obj->id ?>">Xoa</a>
-                                <a href="index.php?controller=population&action=edit&id=<?= $obj->id ?>">Sửa</a>
+
+                            <td> <a href="index.php?controller=population&action=edit&id=<?= $obj->id ?>">Sửa |</a><a
+                                    href="index.php?controller=population&action=delete&id=<?= $obj->id ?>">Xóa</a>
                             </td>
                         </tr>
                     </tbody>
 
 
                 </table>
-                <a href="index.php?controller=population&action=indexlimit">Quay Lai</a>
+                <a href="index.php?controller=population&action=indexlimit"><i class="bi bi-skip-backward-fill"></i></a>
 </body>
 <?php include './Layout/footer.php' ?>
 

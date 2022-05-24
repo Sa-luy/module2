@@ -28,7 +28,7 @@ class PopulationController
 
             $object = new PopulationsModell();
             $obj = $object->add($_REQUEST);
-            header('location: index.php?controller=population&action=index');
+            header('location: index.php?controller=population&action=indexlimit');
         }
         include './View/admin/create.php';
     }
@@ -40,18 +40,18 @@ class PopulationController
         // die();
         $object = new PopulationsModell();
         $object->delete($id);
-        header('location: index.php?controller=population&action=index');
+        header('location: index.php?controller=population&action=indexlimit');
     }
     function edit()
     {
         $id = $_GET['id'];
         $object = new PopulationsModell();
         $obj = $object->detail($id);
-        include './View/admin/edit.php';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $object->edit($id);
-            header('location: index.php?controller=population&action=index');
+            header('location: index.php?controller=population&action=indexlimit');
         }
+        include './View/admin/edit.php';
     }
     public function search()
     {

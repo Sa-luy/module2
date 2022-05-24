@@ -8,10 +8,23 @@
     <title>Document</title>
 </head> -->
 <?php include './Layout/header.php' ?>
+<style>
+table {
+    background-color: gray;
+}
+
+th {
+    color: greenyellow;
+}
+
+input {
+    border-radius: 20px;
+}
+</style>
 
 <body>
     <form action="" method="post">
-        <table border="1">
+        <table class="table">
 
             <tr>
                 <th>Họ</th>
@@ -50,7 +63,7 @@
                     </select></td>
             </tr>
             <tr>
-                <td><button type="submit">Thêm</button></td>
+                <td><button type="submit" style=" border-radius: 10px; background-color: green;">Thêm</button></td>
             </tr>
 
 

@@ -65,7 +65,7 @@
             </div>
             </fieldset>
             <div>
-                <a href="index.php?controller=population&action=index">Quay Lai</a>
+                <a href="index.php?controller=population&action=index"><i class="bi bi-skip-backward-fill"></i></a>
             </div>
 </body>
 

@@ -23,7 +23,7 @@ class PopulationsModell
         $rows = $stmt->fetchAll();
         return $rows;
     }
-    
+
     public function detail($id)
     {
         global $conn;
@@ -66,8 +66,8 @@ class PopulationsModell
         // var_dump($id);
         // die();
         global $conn;
-        $sql = "DELETE FROM $this->tableone WHERE id = $id;
-        DELETE FROM $this->tabletwo WHERE id = $id";
+        $sql = "DELETE FROM populationlist WHERE id = $id;
+        DELETE FROM detail WHERE id = $id";
         $conn->exec($sql);
     }
     public function edit($id)

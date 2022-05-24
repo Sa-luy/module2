@@ -53,7 +53,7 @@
 
         </table>
     </form>
-    <a href="index.php?controller=population&action=indexlimit">Quay Lai</a>
+    <a href="index.php?controller=population&action=indexlimit"></a>
 
 </body>
 <?php include './Layout/footer.php' ?>
